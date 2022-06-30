@@ -19,14 +19,14 @@ class CreateFoodItemsTable extends Migration
             $table->float('price', 5 , 2)->nullable(false);
             $table->text('description')->nullable(false);
             $table->text('ingredients')->nullable(false);
-            $table->text('img_url')->nullable(true);
+            $table->text('img')->nullable(true);
             $table->boolean('is_visible')->default(false);
 
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
             $table->unsignedBigInteger('course_id');
-            $table->foreign('course_id')->references('id')->on('courses');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->timestamps();
         });
     }

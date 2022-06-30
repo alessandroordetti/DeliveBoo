@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "braintree/braintree_php": "^6.8",
         "doctrine/dbal": "^2.12.1",
         "fakerphp/faker": "^1.19",
         "fideloper/proxy": "^4.2",
@@ -17,7 +18,8 @@
         "jzonta/faker-restaurant": "^2.0",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "2.4"
+        "laravel/ui": "2.4",
+        "nesbot/carbon": "^2.59"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

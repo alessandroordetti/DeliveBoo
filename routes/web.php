@@ -1,6 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FoodItemController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,13 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/pay', "Guest\BraintreeController@payOrder");
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/{any}', 'HomeController@index')->name('home');
 
 Route::middleware('auth') // § intermediario che si assicura che il contenuto sia mostrato solo ad utenti loggati
     ->namespace('Admin') // # aggiunge come prefisso sui controller contenuti nel gruppo Admin come namespace
@@ -30,3 +33,9 @@ Route::middleware('auth') // § intermediario che si assicura che il contenuto s
         // Route::get('/', 'HomeController@index')->name('home');   // | Aggiunta facoltativa ->middleware('password.confirm');
         Route::resource('foods', 'FoodItemController');
     });
+
+    Route::get('/guest', function () {
+        return view('guest.home');
+    })->name('guest');
+
+Route::get("/{any}", "HomeController@index")->where("any", ".*");
